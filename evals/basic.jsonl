@@ -1,0 +1,3 @@
+{"id":"short-direct","input":"什么是机会成本？","expect":{"complexity":"simple","human_review":false}}
+{"id":"goal-uncertain","input":"我希望两个月内让新产品获得首批付费客户，但目前不确定应该先做内容还是找渠道。","expect":{"complexity":"moderate","has_next_step":true}}
+

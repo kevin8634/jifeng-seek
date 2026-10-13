@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jifeng-seek"
+version = "0.2.0"
+description = "A general-purpose decision skill and lightweight Decision Object prototype"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "JIFENG SEEK contributors"}]
+dependencies = []
+
+[project.scripts]
+jifeng-seek = "jifeng_seek.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

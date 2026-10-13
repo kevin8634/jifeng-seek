@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/kevin8634/jifeng-seek/blob/main/schemas/decision-object.schema.json",
+  "title": "JIFENG SEEK Decision Object",
+  "type": "object",
+  "required": ["meta", "input", "complexity_gate", "objective", "current_state", "problem", "resources", "breakthrough", "action", "validation", "uncertainty", "human_confirmation", "workflow"],
+  "properties": {
+    "meta": {"type":"object","required":["decision_id","version","created_at","language"],"properties":{"decision_id":{"type":"string"},"version":{"type":"string"},"created_at":{"type":"string","format":"date-time"},"language":{"type":"string"}},"additionalProperties":true},
+    "input": {"type":"object","required":["problem"],"properties":{"problem":{"type":"string","minLength":1},"domain":{"type":["string","null"]}},"additionalProperties":true},
+    "complexity_gate": {"type":"object","required":["level","score","reasons"],"properties":{"level":{"enum":["simple","moderate","complex"]},"score":{"type":"integer","minimum":0,"maximum":10},"reasons":{"type":"array","items":{"type":"string"}}}},
+    "objective": {"type":"object","required":["stated","inferred","success_criteria"],"properties":{"stated":{"type":["string","null"]},"inferred":{"type":"string"},"success_criteria":{"type":"array","items":{"type":"string"}}}},
+    "current_state": {"$ref":"#/$defs/evidence_state"},
+    "problem": {"type":"object","required":["reframed","core_contradiction","non_goals"],"properties":{"reframed":{"type":"string"},"core_contradiction":{"type":"string"},"non_goals":{"type":"array","items":{"type":"string"}}}},
+    "resources": {"type":"object","required":["available","constraints"],"properties":{"available":{"type":"array","items":{"type":"string"}},"constraints":{"type":"array","items":{"type":"string"}}}},
+    "breakthrough": {"type":"object","required":["focus","why_now","alternatives"],"properties":{"focus":{"type":"string"},"why_now":{"type":"string"},"alternatives":{"type":"array","items":{"type":"string"}}}},
+    "action": {"type":"object","required":["next_step","checklist"],"properties":{"next_step":{"type":"string"},"checklist":{"type":"array","items":{"type":"string"}}}},
+    "validation": {"type":"object","required":["test","signals","review_after"],"properties":{"test":{"type":"string"},"signals":{"type":"array","items":{"type":"string"}},"review_after":{"type":"string"}}},
+    "uncertainty": {"type":"object","required":["confidence","unknowns","risks"],"properties":{"confidence":{"type":"number","minimum":0,"maximum":1},"unknowns":{"type":"array","items":{"type":"string"}},"risks":{"type":"array","items":{"type":"string"}}}},
+    "human_confirmation": {"type":"object","required":["required","reason","questions"],"properties":{"required":{"type":"boolean"},"reason":{"type":["string","null"]},"questions":{"type":"array","items":{"type":"string"}}}},
+    "workflow": {"type":"object","required":["suggested_route","future_hooks"],"properties":{"suggested_route":{"enum":["answer","seek_review","workflow_router"]},"future_hooks":{"type":"object"}}}
+  },
+  "$defs": {"evidence_state":{"type":"object","required":["facts","judgments","assumptions","unknowns"],"properties":{"facts":{"type":"array","items":{"type":"string"}},"judgments":{"type":"array","items":{"type":"string"}},"assumptions":{"type":"array","items":{"type":"string"}},"unknowns":{"type":"array","items":{"type":"string"}}}}},
+  "additionalProperties": false
+}
+

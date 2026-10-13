@@ -96,7 +96,6 @@ Success criteria:
 - `schemas/` — machine-readable Decision Object contract
 - `examples/` and `templates/` — sample input and output format
 - `src/` — optional local Python prototype for producing a baseline Decision Object
-- `tests/` — prototype checks
 
 ## License
 
